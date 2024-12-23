@@ -6,19 +6,53 @@
     "next": "Next",
     "start": "Start",
     "skip": "Skip",
-    "resetOnboarding": "Reset Onboarding"
+    "resetOnboarding": "Reset Onboarding",
+    "save": "Save",
+    "change": "Change",
+    "loading": "Loading..."
   },
   "tabs": {
-    "home": "Dashboard",
+    "home": "Home",
     "budget": "Budget",
     "timeline": "Timeline",
     "guests": "Guests",
     "vendors": "Vendors"
   },
+  "screens": {
+    "home": {
+      "title": "Wedding Planner",
+      "daysUntil": "{{days}} days until your special day",
+      "quickActions": {
+        "title": "Quick Actions",
+        "checklist": {
+          "title": "Checklist",
+          "description": "Track your planning progress"
+        },
+        "guests": {
+          "title": "Guest List",
+          "description": "Manage guest list and RSVPs"
+        },
+        "budget": {
+          "title": "Budget",
+          "description": "Track expenses and payments"
+        }
+      },
+      "progress": {
+        "title": "Planning Progress",
+        "overall": "Overall Progress",
+        "budget": "Budget",
+        "guestList": "Guest List",
+        "complete": "{{percent}}% Complete"
+      },
+      "upcomingTasks": {
+        "title": "Upcoming Tasks"
+      }
+    }
+  },
   "onboarding": {
     "getStarted": "Start Planning",
     "screens": {
-      "dashboard": {
+      "home": {
         "title": "Your Wedding Command Center",
         "description": "Everything you need to plan your perfect day, all in one place. Track progress, manage tasks, and stay organized effortlessly."
       },
@@ -39,5 +73,9 @@
         "description": "Find and connect with the best wedding professionals. Compare options, read reviews, and make bookings seamlessly."
       }
     }
+  },
+  "dateSelection": {
+    "title": "When's the Big Day?",
+    "description": "Select your wedding date to help us personalize your planning timeline"
   }
 }

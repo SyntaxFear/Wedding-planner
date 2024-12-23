@@ -33,7 +33,7 @@ const BACKGROUNDS = [
 ];
 
 const SCREENS = [
-  "dashboard",
+  "home",
   "budget",
   "timeline",
   "guests",

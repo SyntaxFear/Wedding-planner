@@ -10,7 +10,9 @@ export default function Index() {
     async function initRoute() {
       try {
         const isFirst = await checkIsFirstLaunch();
-        router.replace(isFirst ? "/(public)/onboarding" : "/(auth)/(tabs)/home");
+        router.replace(
+          isFirst ? "/(public)/onboarding" : "/(auth)/(tabs)/home"
+        );
       } catch (error) {
         console.error("Error determining initial route:", error);
         router.replace("/(public)/onboarding");

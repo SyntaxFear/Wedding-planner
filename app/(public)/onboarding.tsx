@@ -1,6 +1,6 @@
 import { View } from "react-native";
 import { useRouter } from "expo-router";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import { setOnboardingComplete } from "../utils/storage";
 import { Onboarding } from "../components/features/onboarding/Onboarding";
 import { StatusBar } from "expo-status-bar";
 import { useFocusEffect } from "@react-navigation/native";
@@ -13,22 +13,22 @@ export default function OnboardingScreen() {
   useFocusEffect(
     useCallback(() => {
       const onBackPress = () => {
-        return true; 
+        return true;
       };
-      BackHandler.addEventListener('hardwareBackPress', onBackPress);
+      BackHandler.addEventListener("hardwareBackPress", onBackPress);
       return () => {
-        BackHandler.removeEventListener('hardwareBackPress', onBackPress);
+        BackHandler.removeEventListener("hardwareBackPress", onBackPress);
       };
     }, [])
   );
 
   const handleComplete = async () => {
-    await AsyncStorage.setItem("has_completed_onboarding", "true");
+    await setOnboardingComplete();
     router.replace("/(auth)/(tabs)/home");
   };
 
   const handleSkip = async () => {
-    await AsyncStorage.setItem("has_completed_onboarding", "true");
+    await setOnboardingComplete();
     router.replace("/(auth)/(tabs)/home");
   };
 
