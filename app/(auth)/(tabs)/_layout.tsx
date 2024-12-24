@@ -26,8 +26,8 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="home"
         options={{
-          title: "Wedding Planner",
-          headerTitle: "Wedding Planner",
+          title: t("tabs.home"),
+          headerTitle: t("tabs.home"),
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="home-outline" size={size} color={color} />
           ),
