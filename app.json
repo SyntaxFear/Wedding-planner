@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "wedding-planner",
+    "name": "WeddingDay Planner Pro",
     "slug": "wedding-planner",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -14,7 +14,12 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.parastashvilii.weddingplanner",
+      "buildNumber": "1",
+      "config": {
+        "usesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -33,6 +38,15 @@
     ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "router": {
+        "origin": false
+      },
+      "eas": {
+        "projectId": "a07c4716-ddb6-4327-8450-56d2b22efacb"
+      }
+    },
+    "owner": "zinfo20"
   }
 }
