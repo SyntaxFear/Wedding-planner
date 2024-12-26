@@ -2,7 +2,8 @@ import { View, Text, ScrollView, Pressable } from "react-native";
 import { useTranslation } from "react-i18next";
 import { Ionicons } from "@expo/vector-icons";
 import { Link, PathNames } from "expo-router";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
+import { useFocusEffect } from "@react-navigation/native";
 import DatePicker from "../../components/shared/DatePicker";
 import * as storage from "../../utils/storage";
 
@@ -62,16 +63,24 @@ const ProgressSection = ({ title, progress, completeText }: ProgressSectionProps
   </View>
 );
 
-function Home() {
+export default function Home() {
   const { t } = useTranslation();
   const [hasDate, setHasDate] = useState<boolean>(false);
   const [selectedDate, setSelectedDate] = useState<Date>(new Date());
   const [daysUntilWedding, setDaysUntilWedding] = useState<number | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    checkWeddingDate();
-  }, []);
+  const [timelineDetails, setTimelineDetails] = useState<storage.TimelineDetails | null>(null);
+  const [budgetDetails, setBudgetDetails] = useState<storage.BudgetDetails | null>(null);
+  const [guestDetails, setGuestDetails] = useState<storage.GuestDetails | null>(null);
+  const [vendorDetails, setVendorDetails] = useState<storage.VendorDetails | null>(null);
+
+  useFocusEffect(
+    useCallback(() => {
+      loadAllDetails();
+      checkWeddingDate();
+    }, [])
+  );
 
   const checkWeddingDate = async () => {
     try {
@@ -99,10 +108,78 @@ function Home() {
     }
   };
 
-  const upcomingTasks: Task[] = [
-    { id: 1, title: "Book Venue Tour", date: "Tomorrow" },
-    { id: 2, title: "Cake Tasting", date: "Next Week" },
-  ];
+  const loadAllDetails = async () => {
+    try {
+      const timeline = await storage.getTimelineDetails();
+      const budget = await storage.getBudgetDetails();
+      const guests = await storage.getGuestDetails();
+      const vendors = await storage.getVendorDetails();
+
+      setTimelineDetails(timeline);
+      setBudgetDetails(budget);
+      setGuestDetails(guests);
+      setVendorDetails(vendors);
+    } catch (error) {
+      console.error("Error loading details:", error);
+    }
+  };
+
+  const calculateProgress = () => {
+    let totalProgress = 0;
+    let sections = 0;
+
+
+    if (timelineDetails?.tasks.length) {
+      const completed = timelineDetails.tasks.filter(t => t.status === 'completed').length;
+      totalProgress += (completed / timelineDetails.tasks.length) * 100;
+      sections++;
+    }
+
+
+    if (budgetDetails?.items.length) {
+      const withActualCost = budgetDetails.items.filter(i => i.actualCost !== undefined).length;
+      totalProgress += (withActualCost / budgetDetails.items.length) * 100;
+      sections++;
+    }
+
+
+    if (guestDetails?.guests.length) {
+      const responded = guestDetails.guests.filter(g => g.status !== 'invited').length;
+      totalProgress += (responded / guestDetails.guests.length) * 100;
+      sections++;
+    }
+
+
+    if (vendorDetails?.vendors.length) {
+      const hired = vendorDetails.vendors.filter(v => v.status === 'hired').length;
+      totalProgress += (hired / vendorDetails.vendors.length) * 100;
+      sections++;
+    }
+
+    return sections ? Math.round(totalProgress / sections) : 0;
+  };
+
+  const getUpcomingTasks = () => {
+    if (!timelineDetails?.tasks) return [];
+    
+    const now = new Date();
+    const upcoming = timelineDetails.tasks
+      .filter(task => {
+        const dueDate = new Date(task.dueDate);
+        return task.status !== 'completed' && dueDate >= now;
+      })
+      .sort((a, b) => new Date(a.dueDate).getTime() - new Date(b.dueDate).getTime())
+      .slice(0, 3)
+      .map(task => ({
+        id: task.id,
+        title: task.title,
+        date: new Date(task.dueDate).toLocaleDateString(),
+      }));
+
+    return upcoming;
+  };
+
+  const upcomingTasks = getUpcomingTasks();
 
   if (isLoading) {
     return (
@@ -191,6 +268,14 @@ function Home() {
             route={"/(auth)/(tabs)/budget" as PathNames}
           />
         </View>
+        <View className="mb-4">
+          <QuickActionCard
+            icon="briefcase"
+            title={t("screens.home.quickActions.vendors.title")}
+            description={t("screens.home.quickActions.vendors.description")}
+            route={"/(auth)/(tabs)/vendors" as PathNames}
+          />
+        </View>
       </View>
 
       <View className="px-6 pb-8">
@@ -200,23 +285,31 @@ function Home() {
         <View className="mb-4">
           <ProgressSection 
             title={t("screens.home.progress.overall")} 
-            progress={45}
-            completeText={t("screens.home.progress.complete", { percent: 45 })}
+            progress={calculateProgress()}
+            completeText={t("screens.home.progress.complete", { percent: calculateProgress() })}
           />
         </View>
         <View className="flex-row">
           <View className="flex-1 mr-2">
             <ProgressSection 
               title={t("screens.home.progress.budget")} 
-              progress={60}
-              completeText={t("screens.home.progress.complete", { percent: 60 })}
+              progress={budgetDetails?.items.length ? 
+                Math.round((budgetDetails.items.filter(i => i.actualCost !== undefined).length / budgetDetails.items.length) * 100) : 0}
+              completeText={t("screens.home.progress.complete", { 
+                percent: budgetDetails?.items.length ? 
+                  Math.round((budgetDetails.items.filter(i => i.actualCost !== undefined).length / budgetDetails.items.length) * 100) : 0 
+              })}
             />
           </View>
           <View className="flex-1 ml-2">
             <ProgressSection 
               title={t("screens.home.progress.guestList")} 
-              progress={30}
-              completeText={t("screens.home.progress.complete", { percent: 30 })}
+              progress={guestDetails?.guests.length ? 
+                Math.round((guestDetails.guests.filter(g => g.status !== 'invited').length / guestDetails.guests.length) * 100) : 0}
+              completeText={t("screens.home.progress.complete", { 
+                percent: guestDetails?.guests.length ? 
+                  Math.round((guestDetails.guests.filter(g => g.status !== 'invited').length / guestDetails.guests.length) * 100) : 0 
+              })}
             />
           </View>
         </View>
@@ -248,5 +341,3 @@ function Home() {
     </ScrollView>
   );
 }
-
-export default Home;

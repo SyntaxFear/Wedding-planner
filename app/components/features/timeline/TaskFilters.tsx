@@ -87,13 +87,13 @@ export const TaskFilters = ({
 
   const maxHeight = animatedHeight.interpolate({
     inputRange: [0, 1],
-    outputRange: [56, 500],
+    outputRange: [50, 500],
   });
 
   return (
     <Animated.View 
       style={{ maxHeight }}
-      className="bg-gray-50 border-b border-gray-200 overflow-hidden"
+      className="bg-gray-100 border-b border-gray-200 overflow-hidden"
     >
       <Pressable
         onPress={onToggleExpand}
@@ -110,7 +110,7 @@ export const TaskFilters = ({
           </View>
         </View>
         <Ionicons 
-          name={isExpanded ? "chevron-up" : "chevron-down"} 
+          name={!isExpanded ? "chevron-up" : "chevron-down"} 
           size={24} 
           color="#666" 
         />

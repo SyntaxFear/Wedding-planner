@@ -8,6 +8,7 @@
     "skip": "Skip",
     "resetOnboarding": "Reset Onboarding",
     "save": "Save",
+    "cancel": "Cancel",
     "change": "Change",
     "loading": "Loading..."
   },
@@ -135,6 +136,190 @@
         "deleteFailedMessage": "Failed to delete budget item"
       }
     },
+    "vendors": {
+      "title": "Vendors",
+      "overview": {
+        "title": "Vendor Overview",
+        "totalVendors": "{{count}} Total Vendors",
+        "vendorsHired": "{{hired}} of {{total}} vendors hired",
+        "budget": "Vendor Budget"
+      },
+      "addNew": "Add Vendor",
+      "edit": {
+        "title": "Edit Vendor"
+      },
+      "add": {
+        "title": "Add New Vendor"
+      },
+      "delete": {
+        "title": "Delete Vendor",
+        "message": "Are you sure you want to delete this vendor?",
+        "confirm": "Delete",
+        "cancel": "Cancel"
+      },
+      "form": {
+        "basicInfo": "Basic Information",
+        "name": "Name",
+        "namePlaceholder": "Enter vendor name",
+        "category": "Category",
+        "status": "Status",
+        "contacts": "Contacts",
+        "quotes": "Quotes",
+        "additionalInfo": "Additional Information",
+        "contactNamePlaceholder": "Enter contact name",
+        "contactRolePlaceholder": "Enter contact role (optional)",
+        "contactEmailPlaceholder": "Enter contact email",
+        "contactPhonePlaceholder": "Enter contact phone",
+        "quoteAmountPlaceholder": "Enter quote amount",
+        "quoteDescriptionPlaceholder": "Enter quote description",
+        "quoteNotesPlaceholder": "Enter any notes about the quote",
+        "websitePlaceholder": "Enter website URL",
+        "instagramPlaceholder": "Enter Instagram handle",
+        "addressPlaceholder": "Enter address",
+        "descriptionPlaceholder": "Enter description of services",
+        "ratingPlaceholder": "Enter rating (0-5)",
+        "notesPlaceholder": "Enter any additional notes"
+      },
+      "categories": {
+        "venue": "Venue",
+        "catering": "Catering",
+        "photography": "Photography",
+        "videography": "Videography",
+        "florist": "Florist",
+        "music": "Music",
+        "cake": "Cake",
+        "decor": "Decor",
+        "attire": "Attire",
+        "beauty": "Beauty",
+        "transportation": "Transportation",
+        "other": "Other"
+      },
+      "status": {
+        "researching": "Researching",
+        "contacted": "Contacted",
+        "meeting_scheduled": "Meeting Scheduled",
+        "proposal_received": "Proposal Received",
+        "hired": "Hired",
+        "declined": "Declined"
+      },
+      "quoteStatus": {
+        "pending": "Pending",
+        "accepted": "Accepted",
+        "declined": "Declined"
+      },
+      "latestQuote": "Latest Quote",
+      "errors": {
+        "loadFailed": "Error",
+        "loadFailedMessage": "Failed to load vendor list",
+        "saveFailed": "Error",
+        "saveFailedMessage": "Failed to save vendor",
+        "deleteFailed": "Error",
+        "deleteFailedMessage": "Failed to delete vendor",
+        "validation": "Validation Error",
+        "nameRequired": "Vendor name is required",
+        "invalidRating": "Rating must be between 0 and 5"
+      }
+    },
+    "guests": {
+      "title": "Guest List",
+      "overview": {
+        "title": "Guest Overview",
+        "totalGuests": "{{count}} Total Guests"
+      },
+      "addNew": "Add Guest",
+      "edit": {
+        "title": "Edit Guest"
+      },
+      "add": {
+        "title": "Add New Guest"
+      },
+      "delete": {
+        "title": "Delete Guest",
+        "message": "Are you sure you want to delete this guest?",
+        "confirm": "Delete",
+        "cancel": "Cancel"
+      },
+      "form": {
+        "basicInfo": "Basic Information",
+        "firstName": "First Name",
+        "firstNamePlaceholder": "Enter first name",
+        "lastName": "Last Name",
+        "lastNamePlaceholder": "Enter last name",
+        "email": "Email",
+        "emailPlaceholder": "Enter email address",
+        "phone": "Phone",
+        "phonePlaceholder": "Enter phone number",
+        "ageRange": "Age Range",
+        "status": "RSVP Status",
+        "table": "Table Assignment",
+        "dietary": "Dietary Restrictions",
+        "plusOne": "Plus One",
+        "plusOneName": "Plus One Name",
+        "notes": "Additional Notes",
+        "notesPlaceholder": "Add any special notes or requirements..."
+      },
+      "ageRange": {
+        "adult": "Adult",
+        "child": "Child",
+        "children": "Children",
+        "infant": "Infant",
+        "infants": "Infants",
+        "adults": "Adults"
+      },
+      "status": {
+        "invited": "Invited",
+        "confirmed": "Confirmed",
+        "declined": "Declined",
+        "maybe": "Maybe",
+        "pending": "Pending"
+      },
+      "dietary": {
+        "none": "None",
+        "vegetarian": "Vegetarian",
+        "vegan": "Vegan",
+        "gluten_free": "Gluten Free",
+        "other": "Other"
+      },
+      "plusOne": "Plus One",
+      "dietaryRestrictions": "Dietary Restrictions",
+      "tables": {
+        "title": "Table Management",
+        "addNew": "Add New Table",
+        "add": {
+          "title": "Add Table"
+        },
+        "delete": {
+          "title": "Delete Table",
+          "message": "Are you sure you want to delete this table? All guests will be unassigned.",
+          "confirm": "Delete",
+          "cancel": "Cancel"
+        },
+        "form": {
+        "name": "Table Name",
+        "namePlaceholder": "Enter table name (e.g., Table 1, Family Table)",
+        "capacity": "Capacity",
+        "capacityPlaceholder": "Enter number of seats",
+        "location": "Location (Optional)",
+        "locationPlaceholder": "Enter table location (e.g., Main Hall)",
+        "notes": "Notes (Optional)",
+        "notesPlaceholder": "Enter any additional notes about this table"
+        },
+        "capacity": "{{current}}/{{max}} seats",
+        "location": "Location",
+        "assignedGuests": "Assigned Guests",
+        "unassignedGuests": "Unassigned Guests"
+      },
+      "errors": {
+        "loadFailed": "Error",
+        "loadFailedMessage": "Failed to load guest list",
+        "saveFailed": "Error",
+        "saveFailedMessage": "Failed to save guest",
+        "deleteFailed": "Error",
+        "deleteFailedMessage": "Failed to delete guest",
+        "tableError": "Error",
+        "tableErrorMessage": "Failed to update table"
+      }
+    },
     "home": {
       "title": "Wedding Planner",
       "daysUntil": "{{days}} days until your special day",
@@ -151,6 +336,10 @@
         "budget": {
           "title": "Budget",
           "description": "Track expenses and payments"
+        },
+        "vendors": {
+          "title": "Vendors",
+          "description": "Manage and track service providers"
         }
       },
       "progress": {
@@ -158,7 +347,9 @@
         "overall": "Overall Progress",
         "budget": "Budget",
         "guestList": "Guest List",
-        "complete": "{{percent}}% Complete"
+        "vendors": "Vendors",
+        "complete": "{{percent}}% Complete",
+        "vendorProgress": "{{hired}} of {{total}} vendors hired"
       },
       "upcomingTasks": {
         "title": "Upcoming Tasks"

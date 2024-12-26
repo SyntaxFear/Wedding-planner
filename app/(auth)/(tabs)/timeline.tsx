@@ -198,7 +198,7 @@ export default function Timeline() {
                   setSelectedTask(undefined);
                   setShowAddEdit(true);
                 }}
-                className="bg-pink-500 px-4 py-2 rounded-lg"
+                className="bg-pink-500 px-4 flex items-center justify-center rounded-lg"
               >
                 <Text className="text-white font-semibold">
                   {t("screens.timeline.task.addNew")}

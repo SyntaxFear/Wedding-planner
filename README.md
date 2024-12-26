@@ -1,50 +1,153 @@
-# Welcome to your Expo app 👋
+# Wedding Planner App
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+A comprehensive mobile application built with React Native and Expo to help couples plan and manage their wedding efficiently.
 
-## Get started
+## Features
 
-1. Install dependencies
+### 🏠 Home Dashboard
+- Overview of wedding planning progress
+- Days countdown to the wedding
+- Quick access to all features
+- Real-time progress tracking
 
-   ```bash
-   npm install
-   ```
+### 📅 Timeline Management
+- Create and manage wedding-related tasks
+- Set task priorities and due dates
+- Track task completion status
+- Categorize tasks (ceremony, reception, etc.)
+- Dependencies tracking
 
-2. Start the app
+### 💰 Budget Tracking
+- Set and manage total wedding budget
+- Track expenses by category
+- Monitor actual vs estimated costs
+- Real-time budget utilization
+- Remaining budget calculation
 
-   ```bash
-    npx expo start
-   ```
+### 👥 Guest Management
+- Manage guest list with RSVP status
+- Track dietary restrictions
+- Age group categorization
+- Plus-one management
+- Table assignment system
 
-In the output, you'll find options to open the app in a
+### 🤝 Vendor Management
+- Track and manage vendors by category
+- Store vendor contact information
+- Track quotes and proposals
+- Monitor vendor status (researching to hired)
+- Store vendor-related documents
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+### 🌐 Additional Features
+- Multi-language support (English, Georgian)
+- Data persistence
+- Intuitive user interface
+- Real-time updates
+- Progress visualization
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## Technology Stack
 
-## Get a fresh project
+- **Framework**: React Native
+- **Build Tool**: Expo
+- **Styling**: TailwindCSS (NativeWind)
+- **State Management**: React Hooks
+- **Storage**: AsyncStorage
+- **Navigation**: Expo Router
+- **Internationalization**: i18next
+- **Icons**: Expo Vector Icons
 
-When you're ready, run:
+## Getting Started
 
+### Prerequisites
+- Node.js (v14 or higher)
+- npm or yarn
+- Expo CLI
+- iOS Simulator (for Mac) or Android Emulator
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run reset-project
+git clone https://github.com/yourusername/wedding-planner.git
+cd wedding-planner
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
 
-## Learn more
+3. Start the development server:
+```bash
+npx expo start
+```
 
-To learn more about developing your project with Expo, look at the following resources:
+4. Run on your desired platform:
+- Press `i` for iOS simulator
+- Press `a` for Android emulator
+- Scan QR code with Expo Go app for physical device
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+## Project Structure
 
-## Join the community
+```
+wedding-planner/
+├── app/                    # Main application code
+│   ├── (auth)/            # Authenticated screens
+│   ├── (public)/          # Public screens
+│   ├── components/        # Reusable components
+│   │   ├── features/      # Feature-specific components
+│   │   └── shared/        # Shared components
+│   ├── translations/      # Language files
+│   └── utils/            # Utility functions
+├── assets/               # Static assets
+└── ...
+```
 
-Join our community of developers creating universal apps.
+## Features in Detail
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+### Timeline Management
+- Create, edit, and delete tasks
+- Set task priorities (high, medium, low)
+- Track task status (not started, in progress, completed)
+- Categorize tasks by type
+- Set dependencies between tasks
+
+### Budget Management
+- Set and adjust total budget
+- Add budget items with estimated costs
+- Track actual expenses
+- Categorize expenses
+- Monitor budget utilization
+
+### Guest Management
+- Add and manage guests
+- Track RSVP status
+- Manage dietary restrictions
+- Table assignments
+- Plus-one management
+
+### Vendor Management
+- Track vendor details and contacts
+- Store and compare quotes
+- Monitor vendor status
+- Store important documents
+- Track vendor communications
+
+## Contributing
+
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Acknowledgments
+
+- Icons by [Ionicons](https://ionicons.com/)
+- UI components inspired by [TailwindCSS](https://tailwindcss.com/)
